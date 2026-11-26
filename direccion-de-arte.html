@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es-BO" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dirección de Arte — Demente (Pizza, Pan & Sándwiches)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
+  <style>
+    /* ========== SISTEMA DE DISEÑO & TOKENS DE MARCA ========== */
+    :root {
+      /* Colores oficiales */
+      --brand: #21441B;         /* Verde Bosque Demente: color maestro */
+      --brand-press: #152C11;   /* Verde bosque más oscuro al presionar */
+      --brand-soft: #EBF7E9;    /* Verde suave para pastillas y fondos */
+      --brand-on-dark: #D4F998; /* Verde lima legible sobre fondos oscuros */
+      
+      --accent: #E1FCAD;        /* Pistacho Eléctrico: energía y frescura */
+      --accent-hover: #D2F793;  /* Hover del acento */
+      
+      --bg: #F7F6EE;            /* Crema Harina & Masa Madre: fondo cálido */
+      --bg-dark: #122110;       /* Fondo noche de horno / sección leña */
+      
+      --surface: #FFFFFF;       /* Blanco puro para tarjetas */
+      --surface-glass: rgba(255, 255, 255, 0.85);
+      
+      --cta: #D62828;           /* Rojo Brasa & Salsa San Marzano: acción */
+      --cta-hover: #BA1F1F;     /* Hover del botón */
+      --cta-ink: #FFFFFF;       /* Letra blanca con contraste verificado 4.65:1 */
+      
+      --ink: #142211;           /* Carbón vegetal para textos */
+      --muted: #53644F;         /* Texto secundario de alta legibilidad */
+      --line: rgba(33, 68, 27, 0.12); /* Bordes suaves */
+      
+      /* Tipografía */
+      --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      
+      /* Formas derivadas del logo orgánico */
+      --r-full: 9999px;
+      --r-xl: 28px;
+      --r-lg: 20px;
+      --r-md: 14px;
+      --r-sm: 8px;
+      
+      /* Movimiento */
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);       /* expo.out */
+      --ease-io: cubic-bezier(0.87, 0, 0.13, 1);   /* expo.inOut */
+      --ease-pop: cubic-bezier(0.34, 1.68, 0.68, 1);/* rebote elástico controlado */
+      --dur: 0.95s;
+      --dist: 36px;
+      --t-hover: 0.35s;
+      
+      /* Espaciado */
+      --gutter: clamp(16px, 4vw, 32px);
+      --maxw: 1180px;
+    }
+
+    /* Reset y base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Barra de aviso técnico ruva */
+    .muestra-banner {
+      background: var(--brand);
+      color: var(--accent);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(225, 252, 173, 0.2);
+    }
+
+    /* Contenedor central */
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ===================================================
+       1. PORTADA REAL (HERO PROTAGONISTA)
+       =================================================== */
+    .hero-portada {
+      position: relative;
+      background: var(--brand);
+      color: var(--bg);
+      border-radius: 0 0 clamp(24px, 5vw, 44px) clamp(24px, 5vw, 44px);
+      padding: clamp(32px, 6vw, 64px) 0 clamp(48px, 8vw, 84px);
+      overflow: hidden;
+    }
+
+    /* Textura de fuego y horno al fondo */
+    .hero-portada::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(214, 40, 40, 0.18), transparent 70%),
+                  radial-gradient(circle at 80% 80%, rgba(225, 252, 173, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Navegación del Hero */
+    .hero-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: clamp(36px, 6vw, 56px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    .brand-logo-img {
+      height: clamp(38px, 6vw, 52px);
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-badge-pill {
+      background: rgba(225, 252, 173, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(225, 252, 173, 0.35);
+      padding: 4px 12px;
+      border-radius: var(--r-full);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .hero-nav-btn {
+      background: var(--accent);
+      color: var(--brand);
+      padding: 10px 18px;
+      border-radius: var(--r-full);
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform var(--t-hover) var(--ease), background-color var(--t-hover) var(--ease);
+    }
+
+    .hero-nav-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Grid del Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 54px);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(225, 252, 173, 0.12);
+      border: 1px solid rgba(225, 252, 173, 0.25);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-eyebrow svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 7vw, 68px);
+      line-height: 1.05;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .highlight {
+      color: var(--accent);
+      display: inline-block;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: rgba(247, 246, 238, 0.85);
+      line-height: 1.55;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    /* Botón de acción principal (CTA) */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .btn-main-cta {
+      background: var(--cta);
+      color: var(--cta-ink);
+      font-family: var(--font-body);
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: var(--r-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 24px -6px rgba(214, 40, 40, 0.55);
+      text-decoration: none;
+      transition: transform var(--t-hover) var(--ease), background-color var(--t-hover) var(--ease), box-shadow var(--t-hover) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-main-cta:hover {
+      background: var(--cta-hover);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 28px -6px rgba(214, 40, 40, 0.7);
+    }
+
+    .btn-main-cta:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .btn-main-cta svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform var(--t-hover) var(--ease);
+    }
+
+    .btn-main-cta:hover svg {
+      transform: translateX(3px) rotate(-8deg);
+    }
+
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: rgba(247, 246, 238, 0.8);
+    }
+
+    .proof-stars {
+      color: #FFB703;
+      display: flex;
+      gap: 2px;
+    }
+
+    /* Composición Visual Hero: Dial & Pizza */
+    .hero-visual-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dial semicircular de la referencia Crust adaptado a Demente */
+    .pizza-dial-wrap {
+      position: relative;
+      width: clamp(280px, 45vw, 420px);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dial-svg-ring {
+      position: absolute;
+      inset: -20px;
+      width: calc(100% + 40px);
+      height: calc(100% + 40px);
+      pointer-events: none;
+      animation: rotateSlow 40s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .pizza-photo-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 8px rgba(225, 252, 173, 0.15);
+      overflow: hidden;
+      background: radial-gradient(circle, #3D2314 0%, #170E08 100%);
+    }
+
+    .pizza-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .pizza-photo-frame:hover .pizza-img {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    /* Floating badges de ingredientes */
+    .dial-badge {
+      position: absolute;
+      background: var(--surface);
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: var(--r-full);
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      z-index: 3;
+    }
+
+    .dial-badge--1 {
+      top: 5%;
+      left: -10px;
+    }
+
+    .dial-badge--2 {
+      bottom: 12%;
+      right: -15px;
+    }
+
+    .dial-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cta);
+    }
+
+    /* Controles de la muestra (Ver de nuevo) */
+    .muestra-controles {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+    }
+
+    .controles-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-replay {
+      background: var(--brand);
+      color: var(--accent);
+      padding: 10px 20px;
+      border-radius: var(--r-full);
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--t-hover) var(--ease), background-color var(--t-hover) var(--ease);
+    }
+
+    .btn-replay:hover {
+      background: var(--brand-press);
+      transform: scale(1.03);
+    }
+
+    .aviso-rm {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ===================================================
+       2. MUESTRA: PALETA DE COLORES CON SUS ROLES
+       =================================================== */
+    .section-block {
+      padding: clamp(48px, 8vw, 84px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .block-header {
+      margin-bottom: 36px;
+    }
+
+    .block-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .block-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .block-desc {
+      font-size: 16px;
+      color: var(--muted);
+      margin-top: 8px;
+      max-width: 620px;
+    }
+
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .swatch-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .swatch-pill {
+      height: 72px;
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .swatch-info h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .swatch-info p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ===================================================
+       3. MUESTRA: TIPOGRAFÍA REAL DE DEMENTE
+       =================================================== */
+    .type-specimen-wrap {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: clamp(24px, 5vw, 44px);
+    }
+
+    .type-row {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .type-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .type-meta {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .type-hero-sample {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .type-section-sample {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .type-body-sample {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    /* ===================================================
+       4. ELEMENTOS GRÁFICOS DERIVADOS DEL LOGO
+       =================================================== */
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .element-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .element-preview {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sello circular giratorio */
+    .sello-demente {
+      width: 100px;
+      height: 100px;
+      animation: rotateSello 20s linear infinite;
+      color: var(--brand);
+    }
+
+    @keyframes rotateSello {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .element-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .element-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ===================================================
+       5. COMPONENTES: BOTÓN INTERACTIVO Y TARJETA MENÚ
+       =================================================== */
+    .components-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 800px) {
+      .components-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .comp-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: clamp(24px, 4vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Tarjeta de menú inspirada en la referencia */
+    .menu-card-sample {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(33, 68, 27, 0.06);
+      transition: transform var(--t-hover) var(--ease), box-shadow var(--t-hover) var(--ease);
+    }
+
+    .menu-card-sample:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(33, 68, 27, 0.12);
+    }
+
+    .menu-card-img-wrap {
+      position: relative;
+      height: 190px;
+      overflow: hidden;
+      background: #E8ECE6;
+    }
+
+    .menu-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .menu-card-sample:hover .menu-card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .menu-card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--brand);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--r-full);
+      letter-spacing: 0.5px;
+    }
+
+    .menu-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu-card-title-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .menu-card-title-price h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .menu-card-title-price .price {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    .menu-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .btn-card-order {
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: var(--r-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 6px;
+      transition: background-color var(--t-hover) var(--ease), color var(--t-hover) var(--ease);
+    }
+
+    .btn-card-order:hover {
+      background: var(--brand);
+      color: var(--accent);
+    }
+
+    /* Footer discreto */
+    .muestra-footer {
+      padding: 36px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Reducir movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .dial-svg-ring, .sello-demente {
+        animation: none !important;
+      }
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Aviso superior de muestra -->
+  <aside class="muestra-banner" role="status">
+    Muestra de Dirección de Arte • Pizzería Demente (La Paz, Bolivia) • No se publica
+  </aside>
+
+  <!-- ==========================================
+       1. PORTADA REAL (HERO PROTAGONISTA)
+       ========================================== -->
+  <header class="hero-portada" data-portada>
+    <div class="wrap">
+      
+      <!-- Barra superior -->
+      <nav class="hero-nav" data-pieza="nav">
+        <a href="#inicio" class="brand-logo-wrap" aria-label="Demente Pizzería">
+          <img src="img/logo-demente.png" alt="DE MENTE Pizza Pan & Sandwiches" class="brand-logo-img">
+        </a>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span class="brand-badge-pill" style="display: none; @media(min-width:600px){display:inline-block;}">La Paz, Bolivia</span>
+          <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="hero-nav-btn" target="_blank" rel="noopener">
+            <span>Pedir</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Cuadrícula del Hero -->
+      <div class="hero-grid">
+        
+        <!-- Columna de texto y llamado a la acción -->
+        <div class="hero-content">
+          <div class="hero-eyebrow" data-pieza="eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>Masa madre 48h • Horno de leña a 450°C</span>
+          </div>
+
+          <h1 class="hero-title" data-pieza="titulo">
+            La demencia de la <span class="highlight">buena masa</span> en La Paz.
+          </h1>
+
+          <p class="hero-subtitle" data-pieza="subtitulo">
+            Pizzas al horno de leña, sándwiches de cachete de res braseado y panes con fermentación de 48 horas. Sabor auténtico a media cuadra de la Plaza del Estudiante y en San Miguel.
+          </p>
+
+          <div class="cta-group" data-pieza="cta">
+            <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-main-cta" target="_blank" rel="noopener">
+              <span>Hacer Pedido por WhatsApp</span>
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 8.66 15l-1.32 4.84-4.96-1.3A10 10 0 1 1 12 2z"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-proof" data-pieza="proof">
+            <div class="proof-stars" aria-label="4.8 sobre 5 estrellas">
+              ★★★★★
+            </div>
+            <span><strong>4.8</strong> en Google (más de 200 paceños dementes)</span>
+          </div>
+        </div>
+
+        <!-- Columna Visual: Dial Interactivo inspirado en Crust Pizza -->
+        <div class="hero-visual-card" data-pieza="pizza">
+          <div class="pizza-dial-wrap">
+            
+            <!-- Anillo circular gráfico del dial con espigas de trigo -->
+            <svg class="dial-svg-ring" viewBox="0 0 300 300" aria-hidden="true">
+              <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(225, 252, 173, 0.25)" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(225, 252, 173, 0.12)" stroke-width="1"/>
+            </svg>
+
+            <!-- Pizza artesanal de Demente en recorte circular limpio -->
+            <div class="pizza-photo-frame">
+              <img src="img/pizza-jamon-serrano-dial.webp" alt="Pizza Jamón Serrano artesanal al horno de leña de Demente" class="pizza-img" width="420" height="420">
+            </div>
+
+            <!-- Etiquetas de ingredientes de autor -->
+            <div class="dial-badge dial-badge--1">
+              <span class="dial-badge-dot"></span>
+              <span>Jamón Serrano Curado</span>
+            </div>
+            <div class="dial-badge dial-badge--2">
+              <span class="dial-badge-dot"></span>
+              <span>Salsa Blanca & Rúcula</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de control para probar la animación firma -->
+  <div class="muestra-controles">
+    <div class="wrap">
+      <div class="controles-flex">
+        <button type="button" class="btn-replay" data-ver-de-nuevo>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <span>Ver animación de nuevo</span>
+        </button>
+        <span class="aviso-rm" data-aviso-rm hidden>
+          Aviso: Tienes activado "Reducir movimiento": la animación se muestra sin desplazamientos.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================
+         2. PALETA DE COLORES
+         ========================================== -->
+    <section class="section-block">
+      <div class="wrap">
+        <div class="block-header">
+          <span class="block-tag">Identidad cromática</span>
+          <h2 class="block-title">Los colores de Demente y su función</h2>
+          <p class="block-desc">
+            Cada tono tiene un papel claro para que el sitio transmita artesanía, fuego de leña y la frescura rebelde de la marca, sin desorden visual.
+          </p>
+        </div>
+
+        <div class="swatches-grid">
+          
+          <div class="swatch-card">
+            <div class="swatch-pill" style="background: #21441B; color: #E1FCAD;">#21441B</div>
+            <div class="swatch-info">
+              <h4>Verde Bosque Demente</h4>
+              <p>Color principal. Se usa en la portada, encabezados principales, delantales y el pie de página para asentar la identidad.</p>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-pill" style="background: #E1FCAD; color: #21441B;">#E1FCAD</div>
+            <div class="swatch-info">
+              <h4>Pistacho Eléctrico</h4>
+              <p>Acento de frescura. Destaca palabras clave, etiquetas de menú, detalles del logo y da brillo juvenil al verde oscuro.</p>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-pill" style="background: #F7F6EE; color: #21441B; border: 1px solid var(--line);">#F7F6EE</div>
+            <div class="swatch-info">
+              <h4>Crema Masa Madre</h4>
+              <p>Fondo general. Un blanco cálido y acogedor que recuerda a la harina de panadería, evitando el blanco frío de clínica.</p>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-pill" style="background: #D62828; color: #FFFFFF;">#D62828</div>
+            <div class="swatch-info">
+              <h4>Rojo Brasa & Tomate</h4>
+              <p>Color de acción (CTA). Exclusivo para los botones de pedido por WhatsApp, generando apetito y llamado inmediato.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. TIPOGRAFÍAS
+         ========================================== -->
+    <section class="section-block">
+      <div class="wrap">
+        <div class="block-header">
+          <span class="block-tag">Tipografía</span>
+          <h2 class="block-title">Letras con personalidad artesanal</h2>
+          <p class="block-desc">
+            Combinamos una fuente de titulares redondeada y con onda setentera que dialoga con el logo "DE MENTE", junto a una letra limpia para lectura cómoda.
+          </p>
+        </div>
+
+        <div class="type-specimen-wrap">
+          
+          <div class="type-row">
+            <div class="type-meta">Bricolage Grotesque 800 • Titulares con carácter</div>
+            <div class="type-hero-sample">
+              Pizzas que desafían la cordura.
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Bricolage Grotesque 700 • Subtítulos y secciones</div>
+            <div class="type-section-sample">
+              Sándwich de Cachete de Res en Pan Artesanal
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Plus Jakarta Sans • Texto de lectura y carta</div>
+            <p class="type-body-sample">
+              Nuestra masa madura 48 horas en frío antes de entrar a un horno de leña a más de 450 grados centígrados. El resultado: bordes inflados y crujientes con aromas a leña, salsa de tomate natural y queso fundido a la perfección.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. ELEMENTOS GRÁFICOS PROPIOS
+         ========================================== -->
+    <section class="section-block">
+      <div class="wrap">
+        <div class="block-header">
+          <span class="block-tag">Gráfica propia</span>
+          <h2 class="block-title">Recursos nacidos del logo</h2>
+          <p class="block-desc">
+            Ningún adorno genérico de librería. Cada detalle visual viene del logo original de Demente y de la cultura pizzera de La Paz.
+          </p>
+        </div>
+
+        <div class="elements-grid">
+          
+          <div class="element-card">
+            <div class="element-preview">
+              <!-- Sello SVG giratorio -->
+              <svg class="sello-demente" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                  <path id="circulo-sello" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
+                </defs>
+                <text font-size="10.5" font-weight="700" letter-spacing="1.8" fill="currentColor">
+                  <textPath href="#circulo-sello" textLength="276" lengthAdjust="spacing">
+                    DEMENTE • PIZZA, PAN & SÁNDWICHES • LA PAZ •
+                  </textPath>
+                </text>
+                <circle cx="60" cy="60" r="16" fill="var(--accent)"/>
+                <path d="M60 52c-3 0-5 2-5 5s5 11 5 11 5-8 5-11-2-5-5-5z" fill="var(--brand)"/>
+              </svg>
+            </div>
+            <h4>El Sello Circular</h4>
+            <p>Gira con calma en la portada y el pie de página como garantía de masa madre e identidad artesanal.</p>
+          </div>
+
+          <div class="element-card">
+            <div class="element-preview">
+              <!-- Espiga de trigo estilizada del logo -->
+              <svg width="48" height="64" viewBox="0 0 48 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 60V12" stroke="#21441B" stroke-width="3" stroke-linecap="round"/>
+                <path d="M24 20C28 17 34 18 36 22C36 26 30 28 24 28" fill="#E1FCAD" stroke="#21441B" stroke-width="2"/>
+                <path d="M24 20C20 17 14 18 12 22C12 26 18 28 24 28" fill="#E1FCAD" stroke="#21441B" stroke-width="2"/>
+                <path d="M24 34C28 31 34 32 36 36C36 40 30 42 24 42" fill="#E1FCAD" stroke="#21441B" stroke-width="2"/>
+                <path d="M24 34C20 31 14 32 12 36C12 40 18 42 24 42" fill="#E1FCAD" stroke="#21441B" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4>La Espiga de Masa</h4>
+            <p>Extraída del isotipo original, funciona como separador rítmico entre las secciones de la carta.</p>
+          </div>
+
+          <div class="element-card">
+            <div class="element-preview">
+              <span class="brand-badge-pill" style="font-size: 13px; padding: 8px 16px; background: var(--brand); color: var(--accent);">
+                🔥 HORNO DE LEÑA 450°
+              </span>
+            </div>
+            <h4>Pastillas de Fuego</h4>
+            <p>Etiquetas redondeadas que resaltan el método de cocción rústico en cada especialidad.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. COMPONENTES: BOTÓN & TARJETA DE MENÚ
+         ========================================== -->
+    <section class="section-block">
+      <div class="wrap">
+        <div class="block-header">
+          <span class="block-tag">Componentes en acción</span>
+          <h2 class="block-title">Cómo se siente la interacción</h2>
+          <p class="block-desc">
+            Inspirados en la retícula limpia de la referencia, adaptados para navegar sin tropiezos desde cualquier celular.
+          </p>
+        </div>
+
+        <div class="components-grid">
+          
+          <!-- Botón de acción con sus estados -->
+          <div class="comp-box">
+            <h3 style="font-family: var(--font-display); font-size: 20px;">El Botón de Pedido</h3>
+            <p style="font-size: 14px; color: var(--muted);">
+              Pasa el cursor o tócalo: notarás una elevación suave y una ligera inclinación de la flecha, manteniendo siempre su letra blanca legible.
+            </p>
+            <div style="padding: 20px 0;">
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-main-cta" target="_blank" rel="noopener">
+                <span>Hacer Pedido por WhatsApp</span>
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+            <span style="font-size: 12px; color: var(--muted); background: var(--brand-soft); padding: 8px 12px; border-radius: var(--r-sm); display: inline-block;">
+              ✓ Contraste comprobado: letra blanca sobre rojo brasa cumple estándar de lectura.
+            </span>
+          </div>
+
+          <!-- Tarjeta de Menú -->
+          <div class="comp-box">
+            <h3 style="font-family: var(--font-display); font-size: 20px;">Tarjeta de Especialidad</h3>
+            <div class="menu-card-sample">
+              <div class="menu-card-img-wrap">
+                <span class="menu-card-tag">Favorita de la casa</span>
+                <img src="img/pizza-jamon-serrano.webp" alt="Pizza Jamón Serrano de Demente" width="360" height="190">
+              </div>
+              <div class="menu-card-body">
+                <div class="menu-card-title-price">
+                  <h3>Jamón Serrano</h3>
+                  <span class="price">Bs 82</span>
+                </div>
+                <p class="menu-card-desc">
+                  Masa crocante, salsa blanca, queso mozzarella, cebolla caramelizada, jamón serrano, rúcula, vinagreta de hierbas.
+                </p>
+                <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Jam%C3%B3n%20Serrano" class="btn-card-order" target="_blank" rel="noopener">
+                  <span>Pedir esta pizza</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="muestra-footer">
+    <div class="wrap">
+      <p>Hoja de muestra de Dirección de Arte • Creada con Ruva Web Pro para Demente • La Paz, Bolivia</p>
+    </div>
+  </footer>
+
+  <!-- Scripts: GSAP y Lenis locales de vendor/ -->
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ayudantes de Ruva
+      const d = document;
+      const html = d.documentElement;
+      const $ = (s, c = d) => c.querySelector(s);
+      const $$ = (s, c = d) => [...c.querySelectorAll(s)];
+      const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hasGSAP = typeof window.gsap !== 'undefined';
+      const safe = (fn) => { try { fn(); } catch(e) { console.warn('[Demente]', e); } };
+
+      if (!hasGSAP) {
+        html.classList.remove('js');
+        const rep = $('[data-ver-de-nuevo]');
+        if (rep) rep.hidden = true;
+        return;
+      }
+
+      // Tokens de movimiento propios de Demente
+      const M = {
+        ease: 'expo.out',
+        easeIO: 'expo.inOut',
+        pop: 'back.out(1.8)',
+        dur: 0.95,
+        stagger: 0.07,
+        dist: 36
+      };
+
+      // Iniciar Lenis para scroll suave si está disponible
+      safe(() => {
+        if (typeof window.Lenis !== 'undefined' && !RM) {
+          const lenis = new Lenis({ lerp: 0.095 });
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+        }
+      });
+
+      // Función de animación firma
+      function firmaPortada() {
+        const tl = gsap.timeline();
+        
+        if (RM) {
+          // Versión accesible sin desplazamientos
+          tl.fromTo('[data-portada] [data-pieza]', 
+            { autoAlpha: 0 }, 
+            { autoAlpha: 1, duration: 0.4, stagger: 0.05 }
+          );
+          return tl;
+        }
+
+        // Coreografía firma de Demente
+        tl.fromTo('[data-portada] [data-pieza="nav"]',
+          { y: -24, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: M.dur * 0.8, ease: M.ease }
+        )
+        .fromTo('[data-portada] [data-pieza="eyebrow"]',
+          { y: 16, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: M.dur * 0.7, ease: M.ease },
+          '-=0.5'
+        )
+        .fromTo('[data-portada] [data-pieza="titulo"]',
+          { y: M.dist, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: M.dur, ease: M.ease },
+          '-=0.5'
+        )
+        .fromTo('[data-portada] [data-pieza="subtitulo"]',
+          { y: M.dist * 0.7, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: M.dur * 0.85, ease: M.ease },
+          '-=0.7'
+        )
+        .fromTo('[data-portada] [data-pieza="cta"]',
+          { scale: 0.92, autoAlpha: 0 },
+          { scale: 1, autoAlpha: 1, duration: M.dur * 0.8, ease: M.pop },
+          '-=0.6'
+        )
+        .fromTo('[data-portada] [data-pieza="proof"]',
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.6, ease: 'power2.out' },
+          '-=0.4'
+        )
+        .fromTo('[data-portada] [data-pieza="pizza"]',
+          { scale: 0.84, rotation: -12, autoAlpha: 0 },
+          { scale: 1, rotation: 0, autoAlpha: 1, duration: M.dur * 1.2, ease: M.pop },
+          '-=1.1'
+        );
+
+        return tl;
+      }
+
+      // Correr la firma al entrar
+      safe(() => {
+        firmaPortada();
+
+        // Control "Ver de nuevo"
+        const btnReplay = $('[data-ver-de-nuevo]');
+        const avisoRM = $('[data-aviso-rm]');
+        
+        if (RM && avisoRM) {
+          avisoRM.hidden = false;
+        }
+
+        if (btnReplay) {
+          btnReplay.addEventListener('click', () => {
+            btnReplay.blur();
+            firmaPortada();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

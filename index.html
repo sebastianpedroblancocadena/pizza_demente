@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es-BO" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Demente — Pizzas Artesanales al Horno de Leña | La Paz, Bolivia</title>
+  <meta name="description" content="Pizzas artesanales al horno de leña con masa madre de 48 horas e ingredientes locales en Cañada Strongest #1862, La Paz, Bolivia.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Demente — Pizzas Artesanales al Horno de Leña">
+  <meta property="og:description" content="La demencia de la buena masa en La Paz. Horno de leña, fermentación lenta y producto local en Cañada Strongest #1862.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:image" content="img/pizza-jamon-serrano.webp">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo-demente.png">
+  <link rel="apple-touch-icon" href="img/logo-demente.png">
+
+  <!-- Tipografías de Google Fonts con Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos del Sistema Ruva -->
+  <link rel="stylesheet" href="css/styles.css?v=20261125b">
+
+  <!-- Guardia no-js / js -->
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <!-- Barra de progreso vinculada al desplazamiento (CSS Scroll-Driven Animation) -->
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Sentinela superior para detectar scroll de navbar sin scroll listeners -->
+  <div class="nav-scroll-sentinel" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       1. NAVEGACIÓN SUPERIOR FIJA
+       ====================================================================== -->
+  <nav class="top-nav" aria-label="Navegación principal">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="#inicio" class="nav-brand" aria-label="Demente Pizzería - Inicio">
+          <img src="img/logo-demente.png" alt="DE MENTE" class="nav-logo-img" width="52" height="57">
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#menu" class="nav-link">Nuestra Carta</a></li>
+          <li><a href="#sucursales" class="nav-link">Ubicación</a></li>
+          <li><a href="#manifiesto" class="nav-link">La Masa Madre</a></li>
+          <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-nav-pedir" target="_blank" rel="noopener">
+            <span>Pedir</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====================================================================
+         2. HERO SECTION CON DIAL GIRATORIO INTERACTIVO
+         ==================================================================== -->
+    <header id="inicio" class="hero-section">
+      <div class="wrap">
+        <div class="hero-grid">
+          
+          <!-- Contenido y Copy Principal -->
+          <div class="hero-content-col">
+            <div class="hero-eyebrow" data-hero="eyebrow" data-hero-piece>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              <span>Masa madre 48h • Horno de leña a 450°C</span>
+            </div>
+
+            <h1 class="hero-title" data-hero="title" data-hero-piece>
+              La demencia de la <span class="text-accent">buena masa</span> en La Paz.
+            </h1>
+
+            <p class="hero-lead" data-hero="lead" data-hero-piece>
+              Pizzas artesanales de fermentación lenta al fuego vivo de leña, masa madre de 48 horas y producto local paceño en Cañada Strongest #1862, La Paz.
+            </p>
+
+            <div class="hero-cta-box" data-hero="cta" data-hero-piece>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-main-cta" target="_blank" rel="noopener">
+                <span>Hacer Pedido por WhatsApp</span>
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 8.66 15l-1.32 4.84-4.96-1.3A10 10 0 1 1 12 2z"/></svg>
+              </a>
+              <a href="#menu" class="btn-secondary-link">
+                <span>Explorar la Carta</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+              </a>
+            </div>
+
+            <div class="hero-proof" data-hero="proof" data-hero-piece>
+              <div class="proof-stars" aria-label="4.8 estrellas de 5">★★★★★</div>
+              <span><strong>4.8</strong> en Google Maps (más de 205 paceños dementes)</span>
+            </div>
+          </div>
+
+          <!-- Columna Visual: Dial Interactivo de Especialidades -->
+          <div class="hero-dial-container" data-hero-piece>
+            <div class="dial-circle-wrap">
+              
+              <!-- Anillo del dial con textura gráfica -->
+              <svg class="dial-track-svg" viewBox="0 0 300 300" aria-hidden="true">
+                <circle class="dial-track-circle" cx="150" cy="150" r="142" fill="none"/>
+                <circle cx="150" cy="150" r="132" fill="none" stroke="rgba(225, 252, 173, 0.1)" stroke-width="1"/>
+              </svg>
+
+              <!-- Plato giratorio de la pizza -->
+              <div class="dial-pizza-plate" title="Gira o pulsa una especialidad para cambiar">
+                <img src="img/pizza-jamon-serrano-dial.webp" alt="Pizza artesanal al horno de leña de Demente" class="dial-pizza-img" width="440" height="440">
+              </div>
+
+              <!-- Etiquetas flotantes de ingredientes -->
+              <div class="dial-badge dial-badge--1">
+                <span class="dial-badge-dot"></span>
+                <span>Jamón Serrano Curado</span>
+              </div>
+              <div class="dial-badge dial-badge--2">
+                <span class="dial-badge-dot"></span>
+                <span>Salsa Blanca & Rúcula</span>
+              </div>
+            </div>
+
+            <!-- Selector rápido bajo la pizza -->
+            <div class="dial-selector-tabs" role="tablist" aria-label="Selector de pizzas del dial">
+              <button type="button" class="dial-tab-btn is-active" role="tab" aria-selected="true" data-dial-index="0">Jamón Serrano</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="1">Chorizo Picante</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="2">Tocino & Papa</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="3">4 Quesos</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="4">Salame</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="5">Hongos</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="6">Carnívora</button>
+              <button type="button" class="dial-tab-btn" role="tab" aria-selected="false" data-dial-index="7">Hawaiana</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         3. MARQUESINA DINÁMICA (TICKER CONTINUO)
+         ==================================================================== -->
+    <div class="marquee-bar" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span>MASA MADRE 48H</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>HORNO DE LEÑA A 450°C</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>FERMENTACIÓN EN FRÍO</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>CAÑADA STRONGEST #1862</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>PRODUCTO LOCAL LA PAZ</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+        </div>
+        <div class="marquee-item">
+          <span>MASA MADRE 48H</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>HORNO DE LEÑA A 450°C</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>FERMENTACIÓN EN FRÍO</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>CAÑADA STRONGEST #1862</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+          <span>PRODUCTO LOCAL LA PAZ</span>
+          <svg class="marquee-wheat" viewBox="0 0 24 24"><path d="M12 22V2M12 6c3-2 6-1 7 2-2 3-5 3-7 1M12 6c-3-2-6-1-7 2 2 3 5 3 7 1M12 12c3-2 6-1 7 2-2 3-5 3-7 1M12 12c-3-2-6-1-7 2 2 3 5 3 7 1"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         4. UBICACIÓN & ENVÍOS (CAÑADA STRONGEST)
+         ==================================================================== -->
+    <section id="sucursales" class="locations-section section-padding">
+      <div class="wrap">
+        <div class="locations-header">
+          <span class="section-tag" data-reveal="up">Encuéntranos o pide a domicilio</span>
+          <h2 class="section-title" data-reveal="up" data-reveal-delay="80">Nuestra casa en Cañada Strongest</h2>
+          <p class="section-subtitle" data-reveal="up" data-reveal-delay="150">
+            Te esperamos en nuestro salón frente al horno de leña o te la enviamos crujiente y caliente por PedidosYa o WhatsApp directo.
+          </p>
+        </div>
+
+        <div class="locations-card-wrap" data-reveal="scale">
+          
+          <!-- Información de la sucursal Cañada Strongest -->
+          <div class="branch-detail-col" data-reveal="left" data-reveal-delay="100">
+            <div id="branch-canada" class="branch-info-pane is-active">
+              <h3 class="branch-name">Sucursal Cañada Strongest</h3>
+              <p class="branch-address">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px; color:var(--brand);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Cañada Strongest # 1862 (a media cuadra de la Plaza del Estudiante), La Paz.</span>
+              </p>
+              <p class="branch-hours">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:var(--brand);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Lunes a Sábado: 16:00 a 22:00 (Domingos cerrado).</span>
+              </p>
+              <div class="branch-status-tag">
+                <span class="branch-status-dot"></span>
+                <span>Horno encendido hoy a las 16:00</span>
+              </div>
+              <div class="branch-ctas">
+                <a href="https://maps.app.goo.gl/AZPJYi5DuBt2pTeLA" class="btn-branch-map" target="_blank" rel="noopener">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Ver en Google Maps</span>
+                </a>
+                <a href="https://www.pedidosya.com.bo/restaurantes/la-paz/demente-e7c3ccb2-9c1e-4c51-855a-f225b8d66688-menu" class="btn-branch-map" target="_blank" rel="noopener" style="background:#FFF1E8; color:#D62828; border-color:#FFD2BA;">
+                  <span>Pedir por PedidosYa</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa / Visual interactivo con revelado -->
+          <div class="locations-map-visual" data-reveal="clip" data-reveal-delay="180">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.437158739196!2d-68.13459142417734!3d-16.50399868424103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f2100535d41d1%3A0x85a076e765db959b!2sDemente!5e0!3m2!1ses!2sbo!4v1700000000000!5m2!1ses!2sbo" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación de Demente en La Paz">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. NUESTRA CARTA / MENÚ DE PIZZAS CON PRECIOS OFICIALES
+         ==================================================================== -->
+    <section id="menu" class="menu-section section-padding">
+      <div class="wrap">
+        
+        <div class="locations-header">
+          <span class="section-tag" data-reveal="up">Carta oficial</span>
+          <h2 class="section-title" data-reveal="up" data-reveal-delay="80">Especialidades al Horno de Leña</h2>
+          <p class="section-subtitle" data-reveal="up" data-reveal-delay="150">
+            Elaboradas con masa crocante de fermentación lenta, salsas caseras y combinaciones que desafían la cordura.
+          </p>
+        </div>
+
+        <!-- Barra de filtros para las pizzas -->
+        <div class="menu-tabs-bar" role="tablist" data-reveal="up" data-reveal-delay="200">
+          <button type="button" class="menu-tab-filter is-active" data-filter="all">Todas (9)</button>
+          <button type="button" class="menu-tab-filter" data-filter="bestseller">Más Vendidas</button>
+          <button type="button" class="menu-tab-filter" data-filter="carnes">Carnes & Picantes</button>
+          <button type="button" class="menu-tab-filter" data-filter="veggie">Quesos & Veggie</button>
+        </div>
+
+        <!-- Cuadrícula de pizzas reales -->
+        <div class="menu-grid">
+          
+          <!-- 1. Pizza Jamón Serrano -->
+          <article class="menu-item-card" data-tags="bestseller carnes" data-reveal="up" data-reveal-delay="0">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Más Vendido</span>
+              <img src="img/pizza-jamon-serrano.webp" alt="Pizza Jamón Serrano" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Jamón Serrano</h3>
+                <span class="card-item-price">Bs 82</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa blanca, queso mozzarella, cebolla caramelizada, jamón serrano curado, rúcula selvática y vinagreta de hierbas.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Jam%C3%B3n%20Serrano%20(Bs%2082)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Pizza Salame -->
+          <article class="menu-item-card" data-tags="bestseller carnes" data-reveal="up" data-reveal-delay="70">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Más Vendido</span>
+              <img src="img/pizza-salame.webp" alt="Pizza Salame" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Pizza Salame</h3>
+                <span class="card-item-price">Bs 73</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa de tomate natural, queso mozzarella, salame artesanal, locotos y cebollas caramelizadas, pasta de hierba fresca.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Salame%20(Bs%2073)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Pizza Carnívora -->
+          <article class="menu-item-card" data-tags="bestseller carnes" data-reveal="up" data-reveal-delay="140">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Más Vendido</span>
+              <img src="img/pizza-carnivora.webp" alt="Pizza Carnívora" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Pizza Carnívora</h3>
+                <span class="card-item-price">Bs 87</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa de tomate, mozzarella, carne de res sazonada, chorizo artesanal, tocino crujiente y mix de pimientas tostadas.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Carn%C3%ADvora%20(Bs%2087)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. Pizza Chorizo Picante -->
+          <article class="menu-item-card" data-tags="bestseller carnes" data-reveal="up" data-reveal-delay="0">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Picante Especial</span>
+              <img src="img/pizza-chorizo-picante.webp" alt="Pizza Chorizo Picante" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Chorizo Picante</h3>
+                <span class="card-item-price">Bs 80</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa de tomate, mozzarella fundida, chorizo picante artesanal, locotos paceños y un hilo de aceite de oliva extra virgen.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Chorizo%20Picante%20(Bs%2080)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 5. Pizza Tocino y Papa -->
+          <article class="menu-item-card" data-tags="carnes" data-reveal="up" data-reveal-delay="70">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Especial de la Casa</span>
+              <img src="img/pizza-tocino-papa.webp" alt="Pizza Tocino y Papa" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Tocino y Papa</h3>
+                <span class="card-item-price">Bs 80</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa blanca, queso mozzarella, tocino ahumado crocante, cebolla, cremoso de papa y mix de pimientas recién molidas.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Tocino%20y%20Papa%20(Bs%2080)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. Pizza Cuatro Quesos -->
+          <article class="menu-item-card" data-tags="veggie" data-reveal="up" data-reveal-delay="140">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <img src="img/pizza-cuatro-quesos.webp" alt="Pizza Cuatro Quesos" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Cuatro Quesos</h3>
+                <span class="card-item-price">Bs 84</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa blanca, queso mozzarella, queso criollo de chía, parmesano madurado y notas intensas de queso azul.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Cuatro%20Quesos%20(Bs%2084)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. Pizza Hongos de Pino -->
+          <article class="menu-item-card" data-tags="bestseller veggie" data-reveal="up" data-reveal-delay="0">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Vegetariana</span>
+              <img src="img/pizza-hongos.webp" alt="Pizza de Hongos" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Hongos de Pino</h3>
+                <span class="card-item-price">Bs 74</span>
+              </div>
+              <p class="card-item-desc">
+                Salsa de tomate, salsa blanca, hongos de pino confitados, mozzarella, cebolla encurtida, hojas frescas de huerta y almendras tostadas.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20de%20Hongos%20(Bs%2074)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 8. Pizza Hawaiana -->
+          <article class="menu-item-card" data-tags="bestseller carnes" data-reveal="up" data-reveal-delay="70">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">Más Vendido</span>
+              <img src="img/pizza-hawaiana.webp" alt="Pizza Hawaiana Demente" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Pizza Hawaiana</h3>
+                <span class="card-item-price">Bs 70</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa de tomate natural, queso mozzarella, piña encurtida de la casa, jamón seleccionado y ají dulce.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Hawaiana%20(Bs%2070)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 9. Pizza Vegana -->
+          <article class="menu-item-card" data-tags="veggie" data-reveal="up" data-reveal-delay="140">
+            <div class="card-thumb-wrap" data-img-reveal>
+              <span class="card-badge-top">100% Vegana</span>
+              <img src="img/pizza-vegana.webp" alt="Pizza Vegana" class="card-thumb-img" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-header-row">
+                <h3 class="card-item-title">Pizza Vegana</h3>
+                <span class="card-item-price">Bs 72</span>
+              </div>
+              <p class="card-item-desc">
+                Masa crocante, salsa de tomate, tofu marinado en adobo de ajíes, aros de cebolla crocantes, chimichurri fresco, zapallo y hojas verdes.
+              </p>
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20pedir%20la%20Pizza%20Vegana%20(Bs%2072)" class="btn-card-whatsapp" target="_blank" rel="noopener">
+                <span>Pedir por WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6. MANIFIESTO DE LA MASA MADRE & EQUIPO DEMENTE (SECCIÓN OSCURA)
+         ==================================================================== -->
+    <section id="manifiesto" class="manifesto-section section-padding">
+      <div class="wrap">
+        <div class="manifesto-grid">
+          
+          <!-- Bloque de texto del manifiesto -->
+          <div class="manifesto-text-block">
+            <span class="section-tag" data-reveal="up">Filosofía artesanal</span>
+            <h2 class="manifesto-title" data-reveal="up" data-reveal-delay="80">
+              Fermentación lenta, <span class="highlight">fuego vivo</span> y mentes libres.
+            </h2>
+            <p class="manifesto-copy" data-reveal="up" data-reveal-delay="140">
+              No creemos en las pizzas apuradas. Cada bola de masa madura pacientemente durante 48 horas en frío para desarrollar aromas profundos, bordes aireados (el clásico <em>cornicione</em> napolitano) y una digestión ligera que te deja satisfecho, nunca pesado.
+            </p>
+            <p class="manifesto-copy" data-reveal="up" data-reveal-delay="200">
+              Cuando el horno de leña alcanza los 450°C, la masa se infla en cuestión de 90 segundos, sellando la frescura de nuestros quesos locales, embutidos artesanales y locotos paceños.
+            </p>
+
+            <!-- Métricas y contadores interactivos -->
+            <div class="manifesto-stats-grid">
+              <div class="stat-item" data-reveal="scale" data-reveal-delay="0">
+                <div class="stat-number" data-count="48" data-suffix="h">48h</div>
+                <div class="stat-label">Fermentación natural de masa madre</div>
+              </div>
+              <div class="stat-item" data-reveal="scale" data-reveal-delay="70">
+                <div class="stat-number" data-count="450" data-suffix="°C">450°C</div>
+                <div class="stat-label">Temperatura de leña aromática</div>
+              </div>
+              <div class="stat-item" data-reveal="scale" data-reveal-delay="140">
+                <div class="stat-number" data-count="90" data-suffix="s">90s</div>
+                <div class="stat-label">Cocción rápida al fuego vivo</div>
+              </div>
+              <div class="stat-item" data-reveal="scale" data-reveal-delay="210">
+                <div class="stat-number" data-count="4.8" data-suffix="★">4.8★</div>
+                <div class="stat-label">Calificación promedio en Google Maps</div>
+              </div>
+            </div>
+
+            <div class="manifesto-cta-wrap" data-reveal="up" data-reveal-delay="240">
+              <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-main-cta" target="_blank" rel="noopener">
+                <span>Probar la Demencia Ahora</span>
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 8.66 15l-1.32 4.84-4.96-1.3A10 10 0 1 1 12 2z"/></svg>
+              </a>
+              <p class="manifesto-extra-note">
+                También organizamos noches de pizza y vino, eventos privados y pasantías gastronómicas bajo consulta.
+              </p>
+            </div>
+          </div>
+
+          <!-- Retrato protagonista del equipo Demente con logo al fondo -->
+          <div class="manifesto-team-showcase" data-reveal="right" data-reveal-delay="120">
+            <div class="team-showcase-frame">
+              <!-- Aura y marco geométrico decorativo -->
+              <div class="team-decor-ring" aria-hidden="true"></div>
+              <div class="team-decor-glow" aria-hidden="true"></div>
+
+              <!-- Logo gigante de Demente al fondo (con parallax CSS Scroll-Driven) -->
+              <img src="img/logo-demente.png" alt="" class="team-bg-logo" aria-hidden="true" loading="lazy">
+
+              <!-- Foto recortada del personal sin logo frontal (imagen única grande) -->
+              <div class="team-cutout-wrap" data-img-reveal>
+                <img src="img/equipo-demente-cutout.webp" alt="Maestros pizzeros de Demente en La Paz" class="team-cutout-img" width="825" height="1233" loading="lazy">
+              </div>
+
+              <!-- Viñeta decorativa inferior -->
+              <div class="team-caption-badge">
+                <span class="team-caption-dot"></span>
+                <span>Maestros Pizzeros • Cañada Strongest</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. OPINIONES DE CLIENTES (PRUEBA SOCIAL REAL)
+         ==================================================================== -->
+    <section id="opiniones" class="reviews-section section-padding">
+      <div class="wrap">
+        <div class="locations-header">
+          <span class="section-tag" data-reveal="up">Opiniones en Google</span>
+          <h2 class="section-title" data-reveal="up" data-reveal-delay="80">Lo que dicen quienes ya perdieron la razón</h2>
+          <p class="section-subtitle" data-reveal="up" data-reveal-delay="150">
+            4.8 estrellas con más de 205 calificaciones reales en Google Maps y 5.0 en Tripadvisor.
+          </p>
+        </div>
+
+        <div class="reviews-grid">
+          
+          <div class="review-card" data-reveal="up" data-reveal-delay="0">
+            <div class="review-header">
+              <span class="review-author">Alejandro V.</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-quote">
+              "Pizzas de gran calidad y muy recomendables si te gusta disfrutar de una buena masa madre y producto local. La de jamón serrano es de otro planeta."
+            </p>
+            <span class="review-badge-verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Reseña verificada en Google</span>
+            </span>
+          </div>
+
+          <div class="review-card" data-reveal="up" data-reveal-delay="90">
+            <div class="review-header">
+              <span class="review-author">Mariana G.</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-quote">
+              "El ambiente es genial, la música tiene onda y el servicio es súper atento. La masa es crujiente en los bordes y suave al centro, con ese toque a leña inconfundible."
+            </p>
+            <span class="review-badge-verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Reseña verificada en Google</span>
+            </span>
+          </div>
+
+          <div class="review-card" data-reveal="up" data-reveal-delay="180">
+            <div class="review-header">
+              <span class="review-author">Rodrigo P.</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-quote">
+              "Un espectáculo de sabor. Excelente relación precio-calidad para La Paz y una atención de diez. ¡Imperdible la pizza de hongos de pino!"
+            </p>
+            <span class="review-badge-verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Reseña verificada en Google</span>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         8. PREGUNTAS FRECUENTES (FAQ ACCESIBLE)
+         ==================================================================== -->
+    <section class="faq-section section-padding">
+      <div class="wrap">
+        <div class="locations-header">
+          <span class="section-tag" data-reveal="up">Dudas resueltas</span>
+          <h2 class="section-title" data-reveal="up" data-reveal-delay="80">Preguntas frecuentes</h2>
+        </div>
+
+        <div class="faq-list">
+          
+          <details class="faq-item" open data-reveal="up" data-reveal-delay="0">
+            <summary class="faq-summary">
+              <span>¿Qué hace especial a la masa de Demente?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </summary>
+            <div class="faq-body">
+              Trabajamos con fermentación lenta de 48 horas en frío a base de masa madre natural. Esto descompone los azúcares y gluten del cereal, haciéndola ligera, digestiva y con un aroma único al cocinarse en horno de leña a 450°C.
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal="up" data-reveal-delay="60">
+            <summary class="faq-summary">
+              <span>¿Cómo puedo hacer mi pedido para delivery?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </summary>
+            <div class="faq-body">
+              Puedes hacer tu pedido directamente por nuestro WhatsApp (73211810) para coordinar el envío o visitarnos en PedidosYa buscando "Demente" para entrega rápida en tu zona.
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal="up" data-reveal-delay="120">
+            <summary class="faq-summary">
+              <span>¿Tienen opciones vegetarianas y veganas?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </summary>
+            <div class="faq-body">
+              ¡Sí! Contamos con la Pizza de Hongos de Pino (vegetariana con salsa blanca y almendras), la Pizza Cuatro Quesos y la Pizza Vegana (tofu en adobo de ajíes, zapallo, chimichurri y aros de cebolla).
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal="up" data-reveal-delay="180">
+            <summary class="faq-summary">
+              <span>¿Cuáles son los horarios y días de atención?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </summary>
+            <div class="faq-body">
+              Atendemos de lunes a sábado de 16:00 a 22:00 en nuestra sucursal de Cañada Strongest #1862. Los domingos permanecemos cerrados para alimentar y dejar reposar nuestras masas madre.
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sentinela inferior para ocultar la barra móvil fija al llegar al footer -->
+  <div class="footer-scroll-sentinel" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       9. FOOTER DE FIRMA
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        
+        <!-- Columna de marca -->
+        <div data-reveal="up" data-reveal-delay="0">
+          <img src="img/logo-demente.png" alt="Demente Pizza" class="footer-brand-logo">
+          <p class="footer-about">
+            Pizzas artesanales al horno de leña con fermentación lenta en frío. Producto boliviano hecho con pasión, masa madre y ritmo en La Paz.
+          </p>
+          <div style="margin-top: 20px;">
+            <svg class="footer-sello" viewBox="0 0 120 120" aria-hidden="true">
+              <defs>
+                <path id="footer-circulo" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
+              </defs>
+              <text font-size="10.5" font-weight="700" letter-spacing="1.8" fill="currentColor">
+                <textPath href="#footer-circulo" textLength="276" lengthAdjust="spacing">
+                  DEMENTE • PIZZAS AL HORNO DE LEÑA • LA PAZ •
+                </textPath>
+              </text>
+              <circle cx="60" cy="60" r="16" fill="var(--accent)"/>
+              <path d="M60 52c-3 0-5 2-5 5s5 11 5 11 5-8 5-11-2-5-5-5z" fill="var(--brand)"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Columna de Ubicación -->
+        <div data-reveal="up" data-reveal-delay="90">
+          <h4 class="footer-col-title">Ubicación</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item">
+              <strong>Cañada Strongest #1862</strong><br>
+              (a 1/2 cuadra Plaza del Estudiante)<br>
+              La Paz, Bolivia
+            </li>
+            <li class="footer-link-item" style="margin-top: 8px;">
+              <strong>Horario:</strong> Lun a Sáb 16:00 a 22:00
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna de Contacto & Redes -->
+        <div data-reveal="up" data-reveal-delay="180">
+          <h4 class="footer-col-title">Contacto</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item">
+              <a href="https://wa.me/59173211810" target="_blank" rel="noopener">
+                WhatsApp: 73211810
+              </a>
+            </li>
+            <li class="footer-link-item">
+              <a href="https://www.instagram.com/demente.lpz/" target="_blank" rel="noopener">
+                Instagram: @demente.lpz
+              </a>
+            </li>
+            <li class="footer-link-item">
+              <a href="https://www.facebook.com/p/dementelpz-61558476373850/" target="_blank" rel="noopener">
+                Facebook: demente.lpz
+              </a>
+            </li>
+            <li class="footer-link-item">
+              <a href="https://www.pedidosya.com.bo/restaurantes/la-paz/demente-e7c3ccb2-9c1e-4c51-855a-f225b8d66688-menu" target="_blank" rel="noopener">
+                PedidosYa Bolivia
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Demente Pizzas Artesanales. Todos los derechos reservados.</p>
+        <p>Hecho con masa madre y leña en La Paz, Bolivia.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       10. BARRA FIJA INFERIOR PARA CELULAR (STICKY BOTTOM BAR)
+       ====================================================================== -->
+  <aside class="mobile-sticky-bar is-hidden" aria-label="Pedido rápido móvil">
+    <div class="sticky-bar-info">
+      <span class="sticky-bar-title">¿Ganas de pizza?</span>
+      <span class="sticky-bar-sub">Horno de leña a 450°C</span>
+    </div>
+    <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido%20de%20pizzas" class="btn-sticky-cta" target="_blank" rel="noopener">
+      <span>Pedir por WhatsApp</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 1 8.66 15l-1.32 4.84-4.96-1.3A10 10 0 1 1 12 2z"/></svg>
+    </a>
+  </aside>
+
+  <!-- ======================================================================
+       11. SCRIPT PRINCIPAL (Intersection Observer + Web Animations + UI)
+       ====================================================================== -->
+  <script src="js/main.js?v=20261125b" defer></script>
+</body>
+</html>

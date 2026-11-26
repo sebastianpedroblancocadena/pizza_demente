@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. DIAL INTERACTIVO DE PIZZAS EN EL HERO (8 ESPECIALIDADES REALES)
   // --------------------------------------------------------------------------
   safe(() => {
+    const dialStage = $('.hero-dial-container');
     const dialImg = $('.dial-pizza-img');
     const dialTabs = $$('.dial-tab-btn');
     const badge1Text = $('.dial-badge--1 span:last-child');
@@ -222,13 +223,20 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: 'Hawaiana', img: 'img/pizza-hawaiana-dial.webp', badge1: 'Piña Encurtida de la Casa', badge2: 'Jamón & Ají Dulce', rot: 315 },
     ];
 
-    // Precarga ligera de las fotos del dial para intercambio instantáneo
-    pizzaData.forEach((p) => {
-      const preload = new Image();
-      preload.src = p.img;
-    });
+    // Precarga diferida para no frenar el renderizado inicial en móvil
+    window.addEventListener('load', () => {
+      pizzaData.slice(1).forEach((p, i) => {
+        setTimeout(() => {
+          const preload = new Image();
+          preload.src = p.img;
+        }, 250 * (i + 1));
+      });
+    }, { once: true });
 
+    let currentIndex = 0;
     let activeRotation = 0;
+    let autoTimer = null;
+    let isPaused = false;
 
     const animateBadgeSwap = (container, textSpan, newText) => {
       if (!textSpan) return;
@@ -240,68 +248,97 @@ document.addEventListener('DOMContentLoaded', () => {
       const outAnim = container.animate(
         [
           { opacity: 1, transform: 'translateY(0)' },
-          { opacity: 0, transform: 'translateY(-5px)' },
+          { opacity: 0, transform: 'translateY(-4px)' },
         ],
-        { duration: 140, easing: 'ease-in', fill: 'forwards' }
+        { duration: 200, easing: 'ease-in-out', fill: 'forwards' }
       );
 
       outAnim.onfinish = () => {
         textSpan.textContent = newText;
         container.animate(
           [
-            { opacity: 0, transform: 'translateY(6px)' },
+            { opacity: 0, transform: 'translateY(5px)' },
             { opacity: 1, transform: 'translateY(0)' },
           ],
-          { duration: 240, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+          { duration: 320, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
         );
       };
     };
 
-    dialTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => {
-        const item = pizzaData[index];
-        if (!item) return;
+    const selectPizza = (index, isAuto = false) => {
+      const targetIndex = ((index % pizzaData.length) + pizzaData.length) % pizzaData.length;
+      if (targetIndex === currentIndex && isAuto) return;
 
-        dialTabs.forEach((t) => {
-          t.classList.remove('is-active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('is-active');
-        tab.setAttribute('aria-selected', 'true');
+      currentIndex = targetIndex;
+      const item = pizzaData[targetIndex];
+      if (!item) return;
 
-        if (RM || typeof dialImg.animate !== 'function') {
+      dialTabs.forEach((t, i) => {
+        const active = i === targetIndex;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      if (RM || typeof dialImg.animate !== 'function') {
+        dialImg.src = item.img;
+        dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
+        dialImg.style.transform = `scale(1.05) rotate(${item.rot}deg)`;
+      } else {
+        const prevRot = activeRotation;
+        activeRotation = item.rot;
+        const outDur = isAuto ? 360 : 220;
+        const inDur = isAuto ? 680 : 480;
+
+        const swapOut = dialImg.animate(
+          [
+            { opacity: 1, transform: `scale(1.05) rotate(${prevRot}deg)` },
+            { opacity: 0.25, transform: `scale(0.95) rotate(${prevRot + 12}deg)` },
+          ],
+          { duration: outDur, easing: 'ease-in-out', fill: 'forwards' }
+        );
+
+        swapOut.onfinish = () => {
           dialImg.src = item.img;
           dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
-          dialImg.style.transform = `scale(1.05) rotate(${item.rot}deg)`;
-        } else {
-          const prevRot = activeRotation;
-          activeRotation = item.rot;
-
-          const swapOut = dialImg.animate(
+          dialImg.animate(
             [
-              { opacity: 1, transform: `scale(1.05) rotate(${prevRot}deg)` },
-              { opacity: 0.35, transform: `scale(0.92) rotate(${prevRot - 14}deg)` },
+              { opacity: 0.25, transform: `scale(0.95) rotate(${item.rot - 14}deg)` },
+              { opacity: 1, transform: `scale(1.05) rotate(${item.rot}deg)` },
             ],
-            { duration: 180, easing: 'ease-in', fill: 'forwards' }
+            { duration: inDur, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
           );
+        };
+      }
 
-          swapOut.onfinish = () => {
-            dialImg.src = item.img;
-            dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
-            dialImg.animate(
-              [
-                { opacity: 0.35, transform: `scale(0.92) rotate(${item.rot - 16}deg)` },
-                { opacity: 1, transform: `scale(1.05) rotate(${item.rot}deg)` },
-              ],
-              { duration: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
-            );
-          };
+      animateBadgeSwap(badge1El, badge1Text, item.badge1);
+      animateBadgeSwap(badge2El, badge2Text, item.badge2);
+    };
+
+    const startAutoCycle = () => {
+      if (RM) return;
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        if (!isPaused && !d.hidden) {
+          selectPizza(currentIndex + 1, true);
         }
+      }, 4500);
+    };
 
-        animateBadgeSwap(badge1El, badge1Text, item.badge1);
-        animateBadgeSwap(badge2El, badge2Text, item.badge2);
+    dialTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        selectPizza(index, false);
+        startAutoCycle();
       });
     });
+
+    if (dialStage) {
+      dialStage.addEventListener('mouseenter', () => { isPaused = true; });
+      dialStage.addEventListener('mouseleave', () => { isPaused = false; });
+      dialStage.addEventListener('focusin', () => { isPaused = true; });
+      dialStage.addEventListener('focusout', () => { isPaused = false; });
+    }
+
+    startAutoCycle();
   });
 
   // --------------------------------------------------------------------------

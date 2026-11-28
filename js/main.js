@@ -228,11 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialStage = $('.hero-dial-container');
     const dialImg = $('.dial-pizza-img');
     const dialTabs = $$('.dial-tab-btn');
-    const readoutEl = $('.dial-active-readout');
-    const readoutName = $('.dial-active-readout .readout-name');
-    const readoutIng = $('.dial-active-readout .readout-ingredients');
-    const readoutPrice = $('.dial-active-readout .readout-price');
     const dialCtaBtn = $('.btn-dial-cta');
+    const nameBadge = $('.dial-pizza-name-badge');
 
     if (!dialImg || !dialTabs.length) return;
 
@@ -280,6 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
         t.classList.toggle('is-active', active);
         t.setAttribute('aria-selected', active ? 'true' : 'false');
       });
+
+      // Actualiza badge de nombre en móvil
+      if (nameBadge) {
+        nameBadge.style.opacity = '0';
+        setTimeout(() => {
+          nameBadge.textContent = item.name;
+          nameBadge.style.opacity = '1';
+        }, 160);
+      }
 
       if (dialCtaBtn) {
         const msg = encodeURIComponent(`Hola Demente, quiero pedir la Pizza ${item.name} (${item.price})`);

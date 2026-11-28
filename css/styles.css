@@ -512,9 +512,9 @@ ul, ol {
   transition: transform 0.7s var(--ease);
 }
 
-/* Selector interactivo: Chips en móvil, Arco Semicircular Limpio en Escritorio */
+/* Selector interactivo: Oculto en móvil, Arco Semicircular Limpio en Escritorio */
 .dial-selector-tabs {
-  display: flex;
+  display: none; /* oculto en móvil por defecto */
   gap: 6px;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -525,6 +525,36 @@ ul, ol {
   flex-wrap: wrap;
   justify-content: center;
   order: 1;
+}
+
+/* Badge de nombre de pizza activa — sólo en móvil */
+.dial-pizza-name-badge {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(10, 28, 7, 0.78);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 5px 11px;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(225, 252, 173, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.25s ease;
+}
+
+/* En móvil: badge visible, chips ocultos */
+@media (max-width: 859px) {
+  .dial-pizza-name-badge {
+    display: block;
+  }
 }
 
 .dial-tab-btn {
@@ -561,6 +591,14 @@ ul, ol {
 
 /* Arco radial en Escritorio (imitando fielmente la referencia Crust Pizza) */
 @media (min-width: 860px) {
+  /* En escritorio se muestran los tabs del arco, no el badge */
+  .dial-selector-tabs {
+    display: flex;
+  }
+  .dial-pizza-name-badge {
+    display: none !important;
+  }
+
   .dial-radial-stage {
     padding-top: 56px;
   }
@@ -732,7 +770,7 @@ ul, ol {
 
 .hero-bridge-pill {
   pointer-events: auto;
-  max-width: 680px;
+  max-width: 480px;
   margin: 0 auto;
   background: #142211;
   color: #FFFFFF;
@@ -740,48 +778,46 @@ ul, ol {
   padding: 6px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
 .bridge-brand {
-  background: var(--cta);
-  color: #FFFFFF;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.6px;
-  padding: 9px 18px;
-  border-radius: var(--r-full);
-  white-space: nowrap;
+  display: none; /* eliminado */
 }
 
 .bridge-info {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(247, 246, 238, 0.92);
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: none; /* eliminado */
 }
 
+/* CTA genérico en la barra bridge */
 .bridge-cta {
-  background: var(--accent);
-  color: var(--brand);
   font-size: 13px;
   font-weight: 800;
-  padding: 9px 18px;
+  padding: 9px 20px;
   border-radius: var(--r-full);
   white-space: nowrap;
-  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  flex: 1;
+  text-align: center;
+}
+.bridge-cta:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
 }
 
-.bridge-cta:hover {
-  background: var(--accent-hover);
-  transform: scale(1.04);
+/* Ver Carta — fondo acento verde lima */
+.bridge-cta--carta {
+  background: var(--accent);
+  color: var(--brand);
+}
+
+/* Pedir por WhatsApp — fondo rojo CTA */
+.bridge-cta--wa {
+  background: var(--cta);
+  color: #FFFFFF;
 }
 
 @media (max-width: 640px) {
@@ -789,20 +825,9 @@ ul, ol {
     padding: 4px;
     gap: 6px;
   }
-  .bridge-brand {
-    padding: 6px 10px;
-    font-size: 10.5px;
-  }
-  .bridge-info {
-    font-size: 10.5px;
-    letter-spacing: -0.2px;
-  }
-  .bridge-info .bridge-hours {
-    display: none;
-  }
   .bridge-cta {
-    padding: 6px 10px;
-    font-size: 10.5px;
+    font-size: 11px;
+    padding: 7px 12px;
   }
 }
 

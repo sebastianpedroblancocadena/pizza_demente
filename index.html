@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Estilos del Sistema Ruva -->
-  <link rel="stylesheet" href="css/styles.css?v=20261128b">
+  <link rel="stylesheet" href="css/styles.css?v=20261128d">
 
   <!-- Guardia no-js / js -->
   <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
@@ -124,6 +124,8 @@
 
               <!-- Pizza protagonista limpia (cortada por el borde inferior del hero) -->
               <div class="dial-circle-wrap">
+                <!-- Badge de nombre activo (sólo visible en móvil) -->
+                <span class="dial-pizza-name-badge" aria-live="polite">Jamón Serrano</span>
                 <div class="dial-pizza-plate" title="Cambia automáticamente cada 4.5s o elige una especialidad">
                   <img src="img/pizza-jamon-serrano-dial.webp" alt="Pizza artesanal Jamón Serrano de Demente" class="dial-pizza-img" width="520" height="520" fetchpriority="high">
                 </div>
@@ -145,14 +147,13 @@
     </header>
 
     <!-- ====================================================================
-         BARRA FLOTANTE CONECTORA (ESTILO REFERENCIA CRUST PIZZA)
+         BARRA CONECTORA: 2 CTAs limpios
          ==================================================================== -->
     <div class="hero-bridge-wrap">
       <div class="wrap">
-        <div class="hero-bridge-pill" data-reveal="up">
-          <span class="bridge-brand">DE MENTE</span>
-          <span class="bridge-info"><span class="bridge-addr">Cañada Strongest #1862</span><span class="bridge-hours"> • Lun a Sáb 16:00–22:00</span></span>
-          <a href="#menu" class="bridge-cta">Ver Carta ↓</a>
+        <div class="hero-bridge-pill">
+          <a href="#menu" class="bridge-cta bridge-cta--carta">Ver Carta ↓</a>
+          <a href="https://wa.me/59173211810?text=Hola%20Demente%2C%20quiero%20hacer%20un%20pedido" class="bridge-cta bridge-cta--wa" target="_blank" rel="noopener">Pedir por WhatsApp</a>
         </div>
       </div>
     </div>
@@ -774,6 +775,6 @@
   <!-- ======================================================================
        11. SCRIPT PRINCIPAL (Intersection Observer + Web Animations + UI)
        ====================================================================== -->
-  <script src="js/main.js?v=20261128b" defer></script>
+  <script src="js/main.js?v=20261128d" defer></script>
 </body>
 </html>

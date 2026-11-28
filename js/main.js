@@ -263,45 +263,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let activeRotation = 0;
     let autoTimer = null;
-    let isPaused = false;
-
-    const updateReadout = (item) => {
-      if (!readoutEl) return;
-      const applyText = () => {
-        if (readoutName) readoutName.textContent = item.name;
-        if (readoutIng) readoutIng.textContent = item.ingredients;
-        if (readoutPrice) readoutPrice.textContent = item.price;
-      };
-
-      if (RM || typeof readoutEl.animate !== 'function') {
-        applyText();
-        return;
-      }
-
-      const outAnim = readoutEl.animate(
-        [
-          { opacity: 1, transform: 'translateY(0)' },
-          { opacity: 0.72, transform: 'translateY(-2px)' },
-        ],
-        { duration: 150, easing: 'ease-in-out', fill: 'forwards' }
-      );
-
-      outAnim.onfinish = () => {
-        applyText();
-        readoutEl.animate(
-          [
-            { opacity: 0.72, transform: 'translateY(2px)' },
-            { opacity: 1, transform: 'translateY(0)' },
-          ],
-          { duration: 240, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
-        );
-      };
-    };
+    let currentOutAnim = null;
+    let currentInAnim = null;
 
     const selectPizza = (index, isAuto = false) => {
       const targetIndex = ((index % pizzaData.length) + pizzaData.length) % pizzaData.length;
-      if (targetIndex === currentIndex && isAuto) return;
+      if (targetIndex === currentIndex) return;
 
+      const prevIndex = currentIndex;
       currentIndex = targetIndex;
       const item = pizzaData[targetIndex];
       if (!item) return;
@@ -317,45 +286,53 @@ document.addEventListener('DOMContentLoaded', () => {
         dialCtaBtn.href = `https://wa.me/59173211810?text=${msg}`;
       }
 
+      const steps = ((targetIndex - prevIndex) + pizzaData.length) % pizzaData.length || 1;
+      const spinDelta = isAuto ? 45 : Math.max(45, Math.min(steps * 45, 180));
+      const prevRot = activeRotation;
+      const midRot = prevRot + spinDelta * 0.55;
+      const targetRot = prevRot + spinDelta;
+      activeRotation = targetRot;
+
       if (RM || typeof dialImg.animate !== 'function') {
         dialImg.src = item.img;
         dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
-        dialImg.style.transform = `scale(1.04) rotate(${item.rot}deg)`;
-      } else {
-        const prevRot = activeRotation;
-        activeRotation = item.rot;
-        const outDur = isAuto ? 240 : 170;
-        const inDur = isAuto ? 520 : 380;
-
-        const swapOut = dialImg.animate(
-          [
-            { opacity: 1, transform: `scale(1.04) rotate(${prevRot}deg)` },
-            { opacity: 0.72, transform: `scale(0.98) rotate(${prevRot + 8}deg)` },
-          ],
-          { duration: outDur, easing: 'ease-in-out', fill: 'forwards' }
-        );
-
-        swapOut.onfinish = () => {
-          dialImg.src = item.img;
-          dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
-          dialImg.animate(
-            [
-              { opacity: 0.72, transform: `scale(0.98) rotate(${item.rot - 10}deg)` },
-              { opacity: 1, transform: `scale(1.04) rotate(${item.rot}deg)` },
-            ],
-            { duration: inDur, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
-          );
-        };
+        dialImg.style.transform = `scale(1.04) rotate(${targetRot}deg)`;
+        return;
       }
 
-      updateReadout(item);
+      if (currentOutAnim) currentOutAnim.cancel();
+      if (currentInAnim) currentInAnim.cancel();
+
+      currentOutAnim = dialImg.animate(
+        [
+          { opacity: 1, transform: `scale(1.04) rotate(${prevRot}deg)` },
+          { opacity: 0.52, transform: `scale(0.98) rotate(${midRot}deg)` },
+        ],
+        { duration: 320, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' }
+      );
+
+      currentOutAnim.onfinish = () => {
+        currentOutAnim = null;
+        dialImg.src = item.img;
+        dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
+        currentInAnim = dialImg.animate(
+          [
+            { opacity: 0.52, transform: `scale(0.98) rotate(${midRot}deg)` },
+            { opacity: 1, transform: `scale(1.04) rotate(${targetRot}deg)` },
+          ],
+          { duration: 600, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+        );
+        currentInAnim.onfinish = () => {
+          currentInAnim = null;
+        };
+      };
     };
 
     const startAutoCycle = () => {
       if (RM) return;
       clearInterval(autoTimer);
       autoTimer = setInterval(() => {
-        if (!isPaused && !d.hidden) {
+        if (!d.hidden) {
           selectPizza(currentIndex + 1, true);
         }
       }, 4500);
@@ -368,11 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    if (dialStage) {
-      dialStage.addEventListener('mouseenter', () => { isPaused = true; });
-      dialStage.addEventListener('mouseleave', () => { isPaused = false; });
-      dialStage.addEventListener('focusin', () => { isPaused = true; });
-      dialStage.addEventListener('focusout', () => { isPaused = false; });
+    const dialPlate = $('.dial-pizza-plate');
+    if (dialPlate) {
+      dialPlate.addEventListener('click', () => {
+        selectPizza(currentIndex + 1, false);
+        startAutoCycle();
+      });
     }
 
     startAutoCycle();

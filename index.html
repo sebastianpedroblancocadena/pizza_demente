@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Estilos del Sistema Ruva -->
-  <link rel="stylesheet" href="css/styles.css?v=20261128a">
+  <link rel="stylesheet" href="css/styles.css?v=20261128b">
 
   <!-- Guardia no-js / js -->
   <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
@@ -72,26 +72,9 @@
 
           <!-- Encabezado Centrado -->
           <div class="hero-header-center">
-            <div class="hero-eyebrow" data-hero="eyebrow" data-hero-piece>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-              <span>Masa madre 48h • Horno de leña 450°C • <strong>4.8★</strong> en Google (205+ reseñas)</span>
-            </div>
-
             <h1 class="hero-title" data-hero="title" data-hero-piece>
               La demencia de la <span class="text-accent">buena masa</span> en La Paz.
             </h1>
-
-            <p class="hero-lead" data-hero="lead" data-hero-piece>
-              Fermentación lenta en frío al fuego vivo de leña en Cañada Strongest #1862.
-            </p>
-
-            <!-- Ficha dinámica de la pizza activa en el dial (sin tapar la pizza) -->
-            <div class="dial-active-readout" data-hero="lead" data-hero-piece aria-live="polite">
-              <span class="readout-name">Jamón Serrano</span>
-              <span class="readout-sep" aria-hidden="true">•</span>
-              <span class="readout-ingredients">Jamón Serrano Curado, Salsa Blanca & Rúcula</span>
-              <span class="readout-price">Bs 82</span>
-            </div>
           </div>
 
           <!-- Dial Semicircular Central con Pizza Cortada en el Borde Inferior -->
@@ -228,138 +211,6 @@
         </div>
 
         <div class="locations-card-wrap" data-reveal="scale">
-
-          <!-- Ilustración Animada de Repartidor Demente (estilo referencia Crust Pizza) -->
-          <div class="branch-rider-col" data-reveal="left" data-reveal-delay="60">
-            <div class="branch-rider-stage" aria-label="Repartidor de Pizzería Demente llevando pizzas calientes">
-              <div class="rider-tooltip" aria-hidden="true">¡Masa madre calientita!</div>
-              <svg class="demente-rider-svg" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Repartidor en moto con uniforme y caja térmica de Demente">
-                <defs>
-                  <linearGradient id="riderBodyGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#2A5723"/>
-                    <stop offset="100%" stop-color="#173313"/>
-                  </linearGradient>
-                  <linearGradient id="headlightBeam" x1="0" y1="0.5" x2="1" y2="0.5">
-                    <stop offset="0%" stop-color="#E1FCAD" stop-opacity="0.55"/>
-                    <stop offset="100%" stop-color="#E1FCAD" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Sombra y asfalto animado -->
-                <ellipse class="rider-ground-shadow" cx="142" cy="212" rx="92" ry="9" fill="#21441B" opacity="0.14"/>
-                <g class="rider-road-track" aria-hidden="true">
-                  <line x1="22" y1="212" x2="262" y2="212" stroke="#21441B" stroke-opacity="0.22" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="16 14"/>
-                </g>
-
-                <!-- Estelas de velocidad detrás de la moto -->
-                <g class="rider-speed-lines" stroke="#21441B" stroke-opacity="0.24" stroke-width="2.5" stroke-linecap="round">
-                  <line class="speed-line speed-line--1" x1="12" y1="138" x2="36" y2="138"/>
-                  <line class="speed-line speed-line--2" x1="6" y1="154" x2="40" y2="154"/>
-                  <line class="speed-line speed-line--3" x1="18" y1="170" x2="38" y2="170"/>
-                </g>
-
-                <!-- Grupo principal de moto y repartidor (suspensión animada) -->
-                <g class="rider-scooter-group">
-
-                  <!-- Vapor aromático saliendo de la caja térmica -->
-                  <g class="rider-steam-group" stroke="#D62828" stroke-width="2.2" stroke-linecap="round" fill="none">
-                    <path class="rider-steam rider-steam--1" d="M52 86 C48 77, 57 70, 52 61"/>
-                    <path class="rider-steam rider-steam--2" d="M64 84 C60 74, 70 67, 65 57"/>
-                    <path class="rider-steam rider-steam--3" d="M76 87 C72 78, 80 71, 76 63"/>
-                  </g>
-
-                  <!-- Haz de luz del faro delantero -->
-                  <polygon class="rider-headlight-glow" points="212,118 274,104 274,142 212,128" fill="url(#headlightBeam)"/>
-
-                  <!-- Rueda Trasera (giratoria) -->
-                  <g class="rider-wheel rider-wheel-rear">
-                    <circle cx="80" cy="184" r="24" fill="#142211"/>
-                    <circle cx="80" cy="184" r="15" fill="#F7F6EE" stroke="#21441B" stroke-width="2.5"/>
-                    <circle cx="80" cy="184" r="5" fill="#D62828"/>
-                    <line x1="80" y1="169" x2="80" y2="199" stroke="#21441B" stroke-width="2"/>
-                    <line x1="65" y1="184" x2="95" y2="184" stroke="#21441B" stroke-width="2"/>
-                    <line x1="69.5" y1="173.5" x2="90.5" y2="194.5" stroke="#21441B" stroke-width="1.6"/>
-                    <line x1="90.5" y1="173.5" x2="69.5" y2="194.5" stroke="#21441B" stroke-width="1.6"/>
-                  </g>
-
-                  <!-- Rueda Delantera (giratoria) -->
-                  <g class="rider-wheel rider-wheel-front">
-                    <circle cx="206" cy="184" r="24" fill="#142211"/>
-                    <circle cx="206" cy="184" r="15" fill="#F7F6EE" stroke="#21441B" stroke-width="2.5"/>
-                    <circle cx="206" cy="184" r="5" fill="#D62828"/>
-                    <line x1="206" y1="169" x2="206" y2="199" stroke="#21441B" stroke-width="2"/>
-                    <line x1="191" y1="184" x2="221" y2="184" stroke="#21441B" stroke-width="2"/>
-                    <line x1="195.5" y1="173.5" x2="216.5" y2="194.5" stroke="#21441B" stroke-width="1.6"/>
-                    <line x1="216.5" y1="173.5" x2="195.5" y2="194.5" stroke="#21441B" stroke-width="1.6"/>
-                  </g>
-
-                  <!-- Chasis Vespa / Scooter Verde Bosque Demente -->
-                  <!-- Guardafango trasero y escape -->
-                  <rect x="44" y="168" width="24" height="6" rx="3" fill="#53644F"/>
-                  <path d="M52 178 C54 152, 92 146, 114 158 L114 182 L56 182 Z" fill="url(#riderBodyGrad)"/>
-                  <!-- Detalle pistacho lateral -->
-                  <path d="M62 167 Q84 160 105 167" stroke="#E1FCAD" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-                  <!-- Plataforma y columna frontal del scooter -->
-                  <path d="M108 178 L164 178 C176 178, 184 166, 184 148 L178 108 L192 108 L202 152 C204 168, 198 184, 174 186 L108 186 Z" fill="url(#riderBodyGrad)"/>
-                  <!-- Guardafango delantero -->
-                  <path d="M182 174 C188 153, 222 152, 232 172 L182 174 Z" fill="#21441B"/>
-                  <!-- Faro delantero y manubrio -->
-                  <circle cx="204" cy="123" r="9" fill="#E1FCAD" stroke="#142211" stroke-width="2.5"/>
-                  <circle cx="206" cy="122" r="4" fill="#FFFFFF"/>
-                  <path d="M174 106 L190 98 L198 101" stroke="#142211" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="198" cy="101" r="4" fill="#D62828"/>
-
-                  <!-- Asiento del scooter -->
-                  <path d="M98 140 C104 134, 140 134, 148 142 C146 149, 102 150, 98 140 Z" fill="#3D2314"/>
-
-                  <!-- Caja Térmica Trasera con Branding DE MENTE -->
-                  <rect x="44" y="136" width="52" height="5" rx="2" fill="#53644F"/>
-                  <rect x="38" y="92" width="58" height="45" rx="8" fill="#21441B" stroke="#142211" stroke-width="2"/>
-                  <!-- Tapa roja brasa térmica -->
-                  <path d="M38 100 C38 95, 42 92, 46 92 L88 92 C92 92, 96 95, 96 100 L96 104 L38 104 Z" fill="#D62828"/>
-                  <!-- Etiqueta Pistacho DE MENTE en la caja -->
-                  <rect x="44" y="109" width="46" height="22" rx="4" fill="#E1FCAD"/>
-                  <text x="67" y="120" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="8.2" fill="#21441B" letter-spacing="0.2">DE</text>
-                  <text x="67" y="128" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="7.5" fill="#21441B" letter-spacing="0.1">MENTE</text>
-
-                  <!-- Repartidor con Uniforme Demente -->
-                  <!-- Pierna y zapatilla roja (estilo ilustración Demente) -->
-                  <path d="M124 143 L148 148 L156 176 L142 178 L136 156 L118 153 Z" fill="#1F3424"/>
-                  <path d="M140 176 L160 176 C164 176, 166 182, 161 184 L138 184 Z" fill="#D62828"/>
-                  <line x1="140" y1="183" x2="162" y2="183" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-
-                  <!-- Torso con polo/mandil verde Demente y emblema pistacho -->
-                  <path d="M118 92 C122 85, 146 86, 150 96 L145 142 L114 140 Z" fill="#21441B" stroke="#142211" stroke-width="1.8"/>
-                  <!-- Tira de mandil pistacho + logo pecho -->
-                  <path d="M128 91 L126 138" stroke="#E1FCAD" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="137" cy="109" r="7.5" fill="#E1FCAD"/>
-                  <text x="137" y="111.8" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="7" fill="#21441B">DM</text>
-
-                  <!-- Brazo sujetando el manubrio -->
-                  <path d="M142 96 C158 98, 174 102, 192 101" stroke="#21441B" stroke-width="11" stroke-linecap="round" fill="none"/>
-                  <path d="M142 96 C158 98, 174 102, 192 101" stroke="#E1FCAD" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round" fill="none" opacity="0.5"/>
-                  <circle cx="192" cy="101" r="5" fill="#F2BE9B" stroke="#142211" stroke-width="1.5"/>
-
-                  <!-- Cabeza amigable con gorra / casco Demente -->
-                  <path d="M128 83 L128 92 L139 92 L139 83 Z" fill="#E6A984"/>
-                  <circle cx="136" cy="70" r="14.5" fill="#F2BE9B" stroke="#142211" stroke-width="1.8"/>
-                  <!-- Ojo y sonrisa alegre -->
-                  <circle cx="143" cy="69" r="1.9" fill="#142211"/>
-                  <path d="M139 75 Q143 78.5 147 75" stroke="#142211" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                  <!-- Bigote / barba sutil artesanal -->
-                  <path d="M140 73.5 Q143 72 146 73.5" stroke="#3D2314" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-
-                  <!-- Casco / Gorra Oficial Verde Demente con visera pistacho -->
-                  <path d="M120 69 C119 54, 134 48, 148 56 C151 58, 152 63, 150 66 L120 69 Z" fill="#21441B" stroke="#142211" stroke-width="1.8"/>
-                  <path d="M144 64 L161 65 C163 65, 163 68, 160 68.5 L140 68 Z" fill="#E1FCAD" stroke="#142211" stroke-width="1.5"/>
-                  <!-- Detalle espiga en casco -->
-                  <circle cx="132" cy="60" r="3.5" fill="#E1FCAD"/>
-                </g>
-              </svg>
-              <span class="rider-caption">Delivery directo al horno en La Paz</span>
-            </div>
-          </div>
 
           <!-- Información de la sucursal Cañada Strongest -->
           <div class="branch-detail-col" data-reveal="left" data-reveal-delay="100">
@@ -923,6 +774,6 @@
   <!-- ======================================================================
        11. SCRIPT PRINCIPAL (Intersection Observer + Web Animations + UI)
        ====================================================================== -->
-  <script src="js/main.js?v=20261128a" defer></script>
+  <script src="js/main.js?v=20261128b" defer></script>
 </body>
 </html>

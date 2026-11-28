@@ -56,12 +56,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -36px 0px',
+        threshold: 0.04,
+        rootMargin: '0px 0px 80px 0px',
       }
     );
 
     revealEls.forEach((el) => revealObserver.observe(el));
+
+    // Respaldo al saltar con anclas o desplazamiento muy rápido
+    let revealSweepTimer = null;
+    window.addEventListener(
+      'scroll',
+      () => {
+        clearTimeout(revealSweepTimer);
+        revealSweepTimer = setTimeout(() => {
+          const vh = window.innerHeight;
+          revealEls.forEach((el) => {
+            if (el.classList.contains('is-visible')) return;
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= vh + 40) {
+              const delay = el.getAttribute('data-reveal-delay');
+              if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`);
+              el.classList.add('is-visible');
+              revealObserver.unobserve(el);
+            }
+          });
+        }, 80);
+      },
+      { passive: true }
+    );
   });
 
   // --------------------------------------------------------------------------
@@ -205,22 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialStage = $('.hero-dial-container');
     const dialImg = $('.dial-pizza-img');
     const dialTabs = $$('.dial-tab-btn');
-    const badge1Text = $('.dial-badge--1 span:last-child');
-    const badge2Text = $('.dial-badge--2 span:last-child');
-    const badge1El = $('.dial-badge--1');
-    const badge2El = $('.dial-badge--2');
+    const readoutEl = $('.dial-active-readout');
+    const readoutName = $('.dial-active-readout .readout-name');
+    const readoutIng = $('.dial-active-readout .readout-ingredients');
+    const readoutPrice = $('.dial-active-readout .readout-price');
+    const dialCtaBtn = $('.btn-dial-cta');
 
     if (!dialImg || !dialTabs.length) return;
 
     const pizzaData = [
-      { name: 'Jamón Serrano', img: 'img/pizza-jamon-serrano-dial.webp', badge1: 'Jamón Serrano Curado', badge2: 'Salsa Blanca & Rúcula', rot: 0 },
-      { name: 'Chorizo Picante', img: 'img/pizza-chorizo-picante-dial.webp', badge1: 'Chorizo Picante & Locoto', badge2: 'Aceite de Oliva & Leña', rot: 45 },
-      { name: 'Tocino y Papa', img: 'img/pizza-tocino-papa-dial.webp', badge1: 'Tocino Ahumado Crocante', badge2: 'Cremoso de Papa & Pimienta', rot: 90 },
-      { name: 'Cuatro Quesos', img: 'img/pizza-cuatro-quesos-dial.webp', badge1: 'Cuatro Quesos de Altura', badge2: 'Queso de Chía & Azul', rot: 135 },
-      { name: 'Salame', img: 'img/pizza-salame-dial.webp', badge1: 'Salame & Cebolla Dulce', badge2: 'Locoto & Pasta de Hierba', rot: 180 },
-      { name: 'Hongos de Pino', img: 'img/pizza-hongos-dial.webp', badge1: 'Hongos de Pino Confitados', badge2: 'Almendra & Salsa Blanca', rot: 225 },
-      { name: 'Carnívora', img: 'img/pizza-carnivora-dial.webp', badge1: 'Res, Chorizo & Tocino', badge2: 'Mix Demente de Pimientas', rot: 270 },
-      { name: 'Hawaiana', img: 'img/pizza-hawaiana-dial.webp', badge1: 'Piña Encurtida de la Casa', badge2: 'Jamón & Ají Dulce', rot: 315 },
+      { name: 'Jamón Serrano', img: 'img/pizza-jamon-serrano-dial.webp', ingredients: 'Jamón Serrano Curado, Salsa Blanca & Rúcula', price: 'Bs 82', rot: 0 },
+      { name: 'Chorizo Picante', img: 'img/pizza-chorizo-picante-dial.webp', ingredients: 'Chorizo Picante, Locotos & Aceite de Oliva', price: 'Bs 80', rot: 45 },
+      { name: 'Tocino y Papa', img: 'img/pizza-tocino-papa-dial.webp', ingredients: 'Tocino Ahumado, Cremoso de Papa & Pimientas', price: 'Bs 80', rot: 90 },
+      { name: 'Cuatro Quesos', img: 'img/pizza-cuatro-quesos-dial.webp', ingredients: 'Mozzarella, Queso de Chía, Parmesano & Azul', price: 'Bs 84', rot: 135 },
+      { name: 'Salame', img: 'img/pizza-salame-dial.webp', ingredients: 'Salame, Locotos, Cebolla Caramelizada & Hierbas', price: 'Bs 73', rot: 180 },
+      { name: 'Hongos de Pino', img: 'img/pizza-hongos-dial.webp', ingredients: 'Hongos de Pino Confitados, Cebolla & Almendras', price: 'Bs 74', rot: 225 },
+      { name: 'Carnívora', img: 'img/pizza-carnivora-dial.webp', ingredients: 'Carne de Res, Chorizo, Tocino & Mix Pimientas', price: 'Bs 87', rot: 270 },
+      { name: 'Hawaiana', img: 'img/pizza-hawaiana-dial.webp', ingredients: 'Piña Encurtida de la Casa, Jamón & Ají Dulce', price: 'Bs 70', rot: 315 },
     ];
 
     // Precarga diferida para no frenar el renderizado inicial en móvil
@@ -229,6 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           const preload = new Image();
           preload.src = p.img;
+          if (typeof preload.decode === 'function') {
+            preload.decode().catch(() => {});
+          }
         }, 250 * (i + 1));
       });
     }, { once: true });
@@ -238,29 +265,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoTimer = null;
     let isPaused = false;
 
-    const animateBadgeSwap = (container, textSpan, newText) => {
-      if (!textSpan) return;
-      if (RM || !container || typeof container.animate !== 'function') {
-        textSpan.textContent = newText;
+    const updateReadout = (item) => {
+      if (!readoutEl) return;
+      const applyText = () => {
+        if (readoutName) readoutName.textContent = item.name;
+        if (readoutIng) readoutIng.textContent = item.ingredients;
+        if (readoutPrice) readoutPrice.textContent = item.price;
+      };
+
+      if (RM || typeof readoutEl.animate !== 'function') {
+        applyText();
         return;
       }
 
-      const outAnim = container.animate(
+      const outAnim = readoutEl.animate(
         [
           { opacity: 1, transform: 'translateY(0)' },
-          { opacity: 0, transform: 'translateY(-4px)' },
+          { opacity: 0.72, transform: 'translateY(-2px)' },
         ],
-        { duration: 200, easing: 'ease-in-out', fill: 'forwards' }
+        { duration: 150, easing: 'ease-in-out', fill: 'forwards' }
       );
 
       outAnim.onfinish = () => {
-        textSpan.textContent = newText;
-        container.animate(
+        applyText();
+        readoutEl.animate(
           [
-            { opacity: 0, transform: 'translateY(5px)' },
+            { opacity: 0.72, transform: 'translateY(2px)' },
             { opacity: 1, transform: 'translateY(0)' },
           ],
-          { duration: 320, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
+          { duration: 240, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
         );
       };
     };
@@ -279,20 +312,25 @@ document.addEventListener('DOMContentLoaded', () => {
         t.setAttribute('aria-selected', active ? 'true' : 'false');
       });
 
+      if (dialCtaBtn) {
+        const msg = encodeURIComponent(`Hola Demente, quiero pedir la Pizza ${item.name} (${item.price})`);
+        dialCtaBtn.href = `https://wa.me/59173211810?text=${msg}`;
+      }
+
       if (RM || typeof dialImg.animate !== 'function') {
         dialImg.src = item.img;
         dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
-        dialImg.style.transform = `scale(1.05) rotate(${item.rot}deg)`;
+        dialImg.style.transform = `scale(1.04) rotate(${item.rot}deg)`;
       } else {
         const prevRot = activeRotation;
         activeRotation = item.rot;
-        const outDur = isAuto ? 360 : 220;
-        const inDur = isAuto ? 680 : 480;
+        const outDur = isAuto ? 240 : 170;
+        const inDur = isAuto ? 520 : 380;
 
         const swapOut = dialImg.animate(
           [
-            { opacity: 1, transform: `scale(1.05) rotate(${prevRot}deg)` },
-            { opacity: 0.25, transform: `scale(0.95) rotate(${prevRot + 12}deg)` },
+            { opacity: 1, transform: `scale(1.04) rotate(${prevRot}deg)` },
+            { opacity: 0.72, transform: `scale(0.98) rotate(${prevRot + 8}deg)` },
           ],
           { duration: outDur, easing: 'ease-in-out', fill: 'forwards' }
         );
@@ -302,16 +340,15 @@ document.addEventListener('DOMContentLoaded', () => {
           dialImg.alt = `Pizza ${item.name} artesanal de Demente`;
           dialImg.animate(
             [
-              { opacity: 0.25, transform: `scale(0.95) rotate(${item.rot - 14}deg)` },
-              { opacity: 1, transform: `scale(1.05) rotate(${item.rot}deg)` },
+              { opacity: 0.72, transform: `scale(0.98) rotate(${item.rot - 10}deg)` },
+              { opacity: 1, transform: `scale(1.04) rotate(${item.rot}deg)` },
             ],
             { duration: inDur, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
           );
         };
       }
 
-      animateBadgeSwap(badge1El, badge1Text, item.badge1);
-      animateBadgeSwap(badge2El, badge2Text, item.badge2);
+      updateReadout(item);
     };
 
     const startAutoCycle = () => {
